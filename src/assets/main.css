@@ -1,0 +1,26 @@
+@font-face {
+  font-family: Inter;
+  src: url('/src/assets/inter.ttf');
+}
+
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  /* outline: 1px solid black; */
+}
+
+:root {
+  --primary-color: #f1c40f;
+  --secondary-color: #2c3e50;
+  --disabled-color: #bdc3c7;
+  --disabled-text-color: #ecf0f1;
+  --element-padding: 10px;
+  --primary-text-color: #2c3e50;
+  --secondary-text-color: #ecf0f1;
+  --input-text-color: #aaa;
+}
+
+body {
+  font-family: Inter;
+}

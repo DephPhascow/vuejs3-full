@@ -1,0 +1,34 @@
+@mixin set-font($color, $font-size, $font-weight) {
+    color: $color;
+    font-size: $font-size;
+    font-weight: $font-weight;
+}
+
+.list {
+    dt {
+        text-align: left;
+        font-weight: bold;
+        @include set-font(#001732, 16px, 600)
+    }
+    display: grid;
+    grid-template-columns: auto 2fr;
+    grid-gap: 10px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    dd {
+        @include set-font(#001732, 14px, 500)
+    }
+}
+
+@mixin grid-resize($width, $count) {
+    @media (max-width: $width) {
+        & {
+            grid-template-columns: repeat($count, auto);
+            @if ($count <= 2) {
+                justify-content: center;
+            }
+        }
+    }
+}
+
