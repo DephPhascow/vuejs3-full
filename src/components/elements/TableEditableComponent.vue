@@ -18,7 +18,8 @@
                     <input type="checkbox" :checked="selectedRows.includes(item.id)" @click="addSelectRow(item.id)" />
                 </th>
                 <td v-for="cell, cellIndex in item.data" :key="cell.name + cellIndex + index">
-                    <InputTextComponent :type="headers[cellIndex].type" v-model="cell.value" @keyup="keyUp($event, index, cellIndex)" />
+                    <InputTextComponent :type="headers[cellIndex].type" v-model="cell.value" @keyup="keyUp($event, index, cellIndex)" v-if="editableRow"/>
+                    <p v-else>{{ cell.value }}</p>
                 </td>
                 <th v-if="tools" class="table__cell-min">
                     <ButtonComponent :text="$t('table.delete')" class="button__primary" @click="deleteRow(item.id)" />
@@ -82,6 +83,7 @@ export default defineComponent({
         }
     },
     props: {
+        editableRow: Boolean,
         modelValue: {
             type: Array as PropType<Array<TableRow>>,
             required: true,
@@ -158,6 +160,7 @@ export default defineComponent({
         },
     },
     mounted() {
+        this.data = this.modelValue;
         this.currentRow = this.data.map((item) => item.id).reduce((a, b) => Math.max(a, b), 0) + 1;
     }
 })
