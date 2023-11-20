@@ -9,7 +9,7 @@
     }">
         <p :style="{
             minWidth: labelWidth,
-        }">
+        }" v-if="text">
             <slot name="label">
                 {{ text }}
             </slot>        
